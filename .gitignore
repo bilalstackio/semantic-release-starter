@@ -1,3 +1,54 @@
-node_modules
-dist
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output
+dist/
+build/
+
+# Dependency directories
+.pnp/
+.pnp.js
+
+# Vite cache
+.vite/
+
+# Coverage
+coverage/
+
+# TypeScript
+*.tsbuildinfo
+
+# Env files
 .env
+.env.local
+.env.*.local
+
+# Editor/IDE
+.idea/
+.vscode/
+*.swp
+
+# Mac/Linux/Windows system files
+.DS_Store
+Thumbs.db
+
+# Lint caches
+.eslintcache
+
+# Husky
+.husky/_
+
+# Changelog (optional if generated and committed)
+# CHANGELOG.md
+
+# Optional: lockfiles (uncomment if using only one tool)
+# yarn.lock
+# package-lock.json
+# pnpm-lock.yaml

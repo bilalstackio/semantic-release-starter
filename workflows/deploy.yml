@@ -1,0 +1,40 @@
+name: Deploy [your_app_name] App via FTP
+
+on:
+  release:
+    types: [published]
+
+env:
+  FTP_HOST: ${{ secrets.FTP_HOST }}
+  FTP_USER: ${{ secrets.FTP_USERNAME }}
+  FTP_PASS: ${{ secrets.FTP_PASSWORD }}
+  LOCAL_DIR: dist
+  TARGET_DIR: your_app_name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+            node-version: 20.10.0
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Vite App
+        run: npm run build
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ env.FTP_HOST }}
+          username: ${{ env.FTP_USER }}
+          password: ${{ env.FTP_PASS }}
+          local-dir: ${{ env.LOCAL_DIR }}/
+          server-dir: public_html/${{ env.TARGET_DIR }}/

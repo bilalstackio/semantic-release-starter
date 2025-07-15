@@ -110,6 +110,28 @@ Use `npm run commit` to stay compliant.
 
 ---
 
+## 🚦 What Triggers a Release?
+
+Semantic Release uses **Conventional Commits** to determine when and how to bump versions.
+
+| Commit Prefix       | Example                           | Release Type | Description                     |
+|---------------------|-----------------------------------|--------------|---------------------------------|
+| `feat:`             | `feat: add login form`            | **Minor**    | Adds a new feature              |
+| `fix:`              | `fix: correct login bug`          | **Patch**    | Fixes a bug                     |
+| `perf:`             | `perf: optimize image loading`    | **Patch**    | Performance improvement         |
+| `BREAKING CHANGE:`  | _In commit body (any type)_       | **Major**    | Introduces breaking API change |
+
+### ❌ These do **not** trigger a release (by default):
+
+- `chore:` – maintenance, tooling updates
+- `docs:` – documentation only
+- `style:` – formatting, whitespace, etc.
+- `refactor:` – code changes without feature/fix
+- `test:` – test-related only
+
+> 📝 To trigger a release, always use the correct prefix and follow conventional commit rules.
+
+
 ## 📦 Node & Tooling
 
 - Node version: `>=20.10.0`

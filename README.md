@@ -23,8 +23,6 @@ This is a modern starter template for Node.js projects using **semantic-release*
 
 ---
 
-
-
 ## 🧑‍💻 Getting Started
 
 ### 1. Clone & Install

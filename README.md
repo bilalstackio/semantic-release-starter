@@ -1,99 +1,137 @@
-# semantic-release Starter Template
+# 🚀 Semantic Release Starter Template
 
-This is a ready-to-use starter template for fully automated releases using [`semantic-release`](https://semantic-release.gitbook.io/semantic-release/) with support for:
+![Release](https://img.shields.io/github/v/release/bilalstackio/semantic-release-starter-template)
+![Commits](https://img.shields.io/github/commit-activity/m/bilalstackio/semantic-release-starter-template)
+![Build](https://img.shields.io/github/actions/workflow/status/bilalstackio/semantic-release-starter-template/release.yml?label=release%20build)
+![License](https://img.shields.io/github/license/bilalstackio/semantic-release-starter-template)
 
-- Conventional Commits  
-- GitHub Actions  
-- Automatic version bumping  
-- Automatic changelog generation  
-- Commit linting with Husky and Commitlint  
-- Skipping linting for release commits (`[skip ci]`)
+
+This is a modern starter template for Node.js projects using **semantic-release**, **commitlint**, **husky**, and **GitHub Actions**. It automates changelog generation, versioning, and GitHub releases — all from conventional commits.
 
 ---
 
-## 🚀 Getting Started
+## 🔧 Features
 
-### 1. Clone or Extract the Template
+- ✅ **Semantic versioning** powered by [`semantic-release`](https://semantic-release.gitbook.io/)
+- 📝 Automatic **changelog generation**
+- 🚀 **GitHub release publishing**
+- 💬 Enforced **conventional commits** using `commitlint` and `commitizen`
+- 🛡️ **Husky** pre-commit & commit-msg hooks
+- 🧪 Optional **lint-staged** for clean commits
+- ⚙️ Ready-to-use **CI/CD workflows** (including FTP deploy)
+- 📦 Not designed for npm publishing — perfect for custom apps
 
-Unzip or clone this template into your project directory.
+---
 
-### 2. Install Dependencies
+## 🧑‍💻 Getting Started
+
+### 1. Clone & Install
 
 ```bash
+git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
+cd YOUR_REPO
 npm install
 ```
 
-### 3. Add Your GitHub Token
-
-Add a `GH_TOKEN` with repo permissions to your GitHub repository secrets.
-
-Go to:
-
-```
-GitHub → Settings → Secrets → Actions → New Repository Secret
-```
-
-Add:
-
-- Name: `GH_TOKEN`
-- Value: `<your_personal_access_token>`
-
-### 4. Enable GitHub Actions
-
-Make sure your repo has GitHub Actions enabled.
-
-### 5. Make a Release Commit
-
-Use Conventional Commits to trigger a release. Example:
+### 2. Setup Husky
 
 ```bash
-git commit -m "feat: add user login feature"
+npm run prepare
 ```
 
-Once merged into `main`, the GitHub workflow will:
+### 3. Make Your First Commit
 
-- Determine the next version
-- Update `CHANGELOG.md`
-- Bump the version in `package.json`
-- Commit and push the changes
-- Create a GitHub release
-
----
-
-## 📁 Included Files
-
-- `.releaserc.json` – Semantic Release configuration
-- `.commitlintrc.json` – Commitlint rules
-- `.github/workflows/release.yml` – Release workflow
-- `.husky/commit-msg` – Skips linting for `[skip ci]` commits
-- `package.json` – npm config with scripts and dev dependencies
-
----
-
-## 🛠️ Customizing
-
-- Change branch name in `.releaserc.json`
-- Use `pnpm` or `yarn` instead of `npm` if needed
-- To publish to npm, set `"npmPublish": true` in `.releaserc.json`
-
----
-
-## 🧪 Local Dry Run (Optional)
+Use the CLI to follow conventional commit format:
 
 ```bash
-npx semantic-release --dry-run
+npm run commit
 ```
 
 ---
 
-## ✅ Requirements
+## 🚀 Release Automation
 
-- Node.js 18+
-- GitHub repo with `GH_TOKEN` secret
-- At least one commit using Conventional Commits
+On every push to `main`, a GitHub release will be created **if your commits follow conventional format**.
+
+### ✅ Example Commit
+
+```bash
+feat: add login page [skip ci]
+```
+
+No need to bump versions or update changelogs manually — `semantic-release` handles it.
 
 ---
 
-## 📦 License
+## 📁 Project Structure
 
-[MIT](./LICENSE)
+```
+├── .github/workflows/
+│   ├── release.yml       # GitHub Action: automatic versioning & release
+│   └── deploy.yml        # Optional: FTP deploy on release
+├── .husky/               # Pre-commit & commit-msg hooks
+├── CHANGELOG.md          # Auto-generated changelog
+├── .releaserc.json       # Semantic release config
+├── .commitlintrc.json    # Commitlint rules
+├── package.json          # All scripts and dev tools
+├── .gitignore            # Modern exclusions
+```
+
+---
+
+## 🔑 Environment Variables
+
+Set these secrets in your GitHub repo under **Settings → Secrets and variables → Actions**:
+
+| Secret Name     | Description                    |
+|-----------------|--------------------------------|
+| `GH_TOKEN`       | GitHub PAT for releases        |
+| `FTP_HOST`       | FTP host for deploy (optional) |
+| `FTP_USERNAME`   | FTP username (optional)        |
+| `FTP_PASSWORD`   | FTP password (optional)        |
+
+> Your `GH_TOKEN` should have `repo` scope.
+
+---
+
+## 💡 Commit Guidelines
+
+This project uses [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
+
+```
+feat:     A new feature
+fix:      A bug fix
+chore:    Tooling or dev-related changes
+docs:     Documentation only
+refactor: Non-functional refactoring
+```
+
+Use `npm run commit` to stay compliant.
+
+---
+
+## 📦 Node & Tooling
+
+- Node version: `>=20.10.0`
+- You can use `.nvmrc` for auto version switching:
+  ```bash
+  echo "20.10.0" > .nvmrc
+  ```
+
+---
+
+## 📜 License
+
+[MIT](./LICENSE) — free to use, fork, and modify.
+
+---
+
+## 🙌 Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you'd like to change.
+
+---
+
+## 🧠 Inspiration
+
+Built to save time on every new project. Fork it, extend it, automate your workflow, and never think about versioning again.

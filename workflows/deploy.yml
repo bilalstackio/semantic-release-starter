@@ -1,4 +1,4 @@
-name: Deploy [your_app_name] App via FTP
+name: Deploy App via FTP
 
 on:
   release:
@@ -9,10 +9,11 @@ env:
   FTP_USER: ${{ secrets.FTP_USERNAME }}
   FTP_PASS: ${{ secrets.FTP_PASSWORD }}
   LOCAL_DIR: dist
-  TARGET_DIR: your_app_name
+  TARGET_DIR: your_app_name # Replace this with your app's FTP folder name
 
 jobs:
   deploy:
+    if: ${{ github.repository != 'bilalstackio/semantic-release-starter-template' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -22,7 +23,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-            node-version: 20.10.0
+          node-version: 20.10.0
 
       - name: Install Dependencies
         run: npm ci
